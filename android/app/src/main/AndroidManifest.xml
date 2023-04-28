@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.reorder">
+    package="com.goback.audiotimestamp">
    <application
-        android:label="reorder"
+        android:label="audiotimestamp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

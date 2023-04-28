@@ -39,13 +39,14 @@ class _TimeStampListState extends State<TimeStampList> {
   }
 
   Future<void> listerine() async {
-    final assetPath = new Directory(".");
+    final assetPath = new Directory("./audio");
     await for (var v in assetPath.list()) {
       if (v.statSync().type == FileSystemEntityType.file) {
         final metaData = await MetadataRetriever.fromFile(File(v.path));
 
         if (metaData.trackDuration != null) {
-          final filename = Uri.decodeFull(v.uri.toString());
+          final filename =
+              Uri.decodeFull(v.uri.toString().replaceFirst('audio/', ''));
           final duration = metaData.trackDuration;
           info_list.add({'filename': filename, 'duration': duration});
         }
@@ -66,11 +67,13 @@ class _TimeStampListState extends State<TimeStampList> {
           duration.toString().split(':'); // '0:00:00.000000' 형태를 분리
       final hour = rawTimeStamp[0];
       final minute = rawTimeStamp[1];
-      final second = rawTimeStamp[2].substring(0, 2); // '00.000000' 에서 '.000000' 삭제
+      final second =
+          rawTimeStamp[2].substring(0, 2); // '00.000000' 에서 '.000000' 삭제
 
       // 시간이 '0' 일 경우 '00:00'
       // 시간이 '0' 이 아닐 경우 'xx:00:00'
-      final timeStamp = '${hour != '0' ? hour.padLeft(2, '0') + ':' : ''}$minute:$second';
+      final timeStamp =
+          '${hour != '0' ? hour.padLeft(2, '0') + ':' : ''}$minute:$second';
 
       // 시간 더하기
       duration += Duration(milliseconds: e['duration']);
