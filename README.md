@@ -1,3 +1,5 @@
+![screen](https://user-images.githubusercontent.com/12387741/235073203-6d333ecb-074d-4404-9cfd-f2d50ec8d87c.gif)
+
 # audio time stamp
 - 유튜브 플레이리스트 채널의 설명에 작성할 타임스템프 작성용 프로그램
 
